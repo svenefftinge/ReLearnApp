@@ -3,5 +3,5 @@ ports:
 - port: 19001
 - port: 19002
 tasks:
-- init: npm install -g expo-cli
+- init: npm install expo-cli
   command: npm start
