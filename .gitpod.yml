@@ -4,4 +4,4 @@ ports:
 - port: 19002
 tasks:
 - init: npm install expo-cli
-  command: npm start
+  command: npm start --tunnel
