@@ -56,7 +56,7 @@ export default class HomeScreen extends React.Component {
         </View>
         */}
         <Recorder style={styles.tabBarInfoContainer}></Recorder>
-				
+
       </View>
     );
   }

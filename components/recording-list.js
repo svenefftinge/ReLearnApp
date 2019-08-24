@@ -8,26 +8,26 @@ import moment from 'moment';
 export default class RecordingList extends Component {
 
 		createListItems() {
-			return this.props.recordings.map((recording) => 
+			return this.props.recordings.map((recording) =>
 				recording
 			);
 		}
     render() {
         return(<FlatList
 						data= {this.createListItems()}
-						
+
             keyExtractor={(item, index) => item.id}
 						renderItem={({ item, separators }) => (
      		    	<Cell
         				//cellStyle="Basic"
 								title={item.name}
 								//contentContainerStyle={{ alignItems: "flex-start", height: 45 }}
-								
+
 								/*
 								cellContentView={
 									// Collapsable Play Box goes here
 								}
-								*/ 
+								*/
 								onPress={console.log}
         				onHighlightRow={separators.highlight}
         				onUnHighlightRow={separators.unhighlight}
@@ -40,4 +40,4 @@ export default class RecordingList extends Component {
     }
 
 }
-    					
+
