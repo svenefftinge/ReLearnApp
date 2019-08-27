@@ -15,7 +15,7 @@ import { MonoText } from '../components/StyledText';
 
 import { uploadRecording } from '../components/upload-recording-button';
 
-import RecordingList from '../containers/recording-list';
+import RecordingList from '../components/recording-list';
 
 import Recorder from '../components/recorder';
 
