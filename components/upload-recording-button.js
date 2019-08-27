@@ -1,18 +1,24 @@
 import React, {Component} from 'react';
 import { DocumentPicker } from 'expo';
-import {selectUser} from '../actions/index.js';
+import {addRecording} from '../actions/index.js';
 import { Button } from 'react-native';
+import { connect } from 'http2';
 
-export default class UploadRecordingButton extends Component {
+class UploadRecordingButton extends Component {
     render() {
         return(
             <Button
-                onPress={()=>uploadRecording()}
+                //onPress={()=>uploadRecording()}
+                onPress={addToListActionCreator()}
                 title="Add"
                 color="#007AFF"
             />
         )
     }
+}
+
+function addToListActionCreator() {
+
 }
 async function uploadRecording() {
   let result = await DocumentPicker.getDocumentAsync({type: '*/*'});
@@ -21,3 +27,9 @@ async function uploadRecording() {
     //upload function(result.uri);
   }
 }
+
+function matchDispatchToProps(dispatch){
+    return bindActionCreators({addRecording: addRecording}, dispatch)
+}
+
+export default connect(matchDispatchToProps)(UserList);
