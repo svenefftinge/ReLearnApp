@@ -13,7 +13,7 @@ import { WebBrowser } from 'expo';
 
 import { MonoText } from '../components/StyledText';
 
-import { uploadRecording } from '../components/upload-recording-button';
+import UploadRecordingButton from '../components/upload-recording-button';
 
 import RecordingList from '../components/recording-list';
 
@@ -26,11 +26,7 @@ export default class HomeScreen extends React.Component {
     title: 'Recents',
     // uploadRecording(this)
     headerRight: (
-      <Button
-        onPress={()=>uploadRecording()}
-        title="Add"
-        color="#007AFF"
-      />
+      <UploadRecordingButton/>
     ),
   };
 
