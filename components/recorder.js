@@ -1,7 +1,12 @@
 
 import React from 'react';
 import {View, Button, Text} from 'react-native';
-import Expo, { Asset, Audio, FileSystem, Font, Permissions } from 'expo';
+import Expo from 'expo';
+import * as Permissions from 'expo-permissions';
+import * as Font from 'expo-font';
+import * as FileSystem from 'expo-file-system';
+import { Audio } from 'expo-av';
+import * as Asset from 'expo-asset';
 import SlidingUpPanel from 'rn-sliding-up-panel';
 
 const styles = {
@@ -18,7 +23,7 @@ const styles = {
     elevation: 20,
     paddingHorizontal: 4,
     height: 20,
-    
+
   }
 }
 // 600, 150

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { DocumentPicker } from 'expo';
+import * as DocumentPicker from 'expo-document-picker';
 import { bindActionCreators } from 'redux';
 import {addRecording} from '../actions/index.js';
 import { Button } from 'react-native';

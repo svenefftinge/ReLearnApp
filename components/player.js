@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { AppRegistry, FlatList, StyleSheet, Text, View, TextInput } from 'react-native';
 import moment from 'moment';
-import { Audio } from 'expo';
+import { Audio } from 'expo-av';
 
 export default class Player extends Component {
 // REQUIRES NEW STATE "Current Recording" with Recording object, audio location, current word
