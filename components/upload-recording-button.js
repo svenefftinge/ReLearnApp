@@ -1,15 +1,29 @@
 import React, {Component} from 'react';
 import { DocumentPicker } from 'expo';
+import { bindActionCreators } from 'redux';
 import {addRecording} from '../actions/index.js';
 import { Button } from 'react-native';
-import { connect } from 'http2';
+import { connect } from 'react-redux';
 
 class UploadRecordingButton extends Component {
     render() {
         return(
             <Button
                 //onPress={()=>uploadRecording()}
-                onPress={addToListActionCreator()}
+                //onPress={()=>addToListActionCreator()}
+                onPress={()=>this.props.addRecording(
+                    {
+                        eventID: "0",
+                        id: "12345abacca",
+		    	        name: "White Hall",
+	    	        	date: new Date('1995-12-17T03:24:01'),
+		            	status: "recording",
+                        recordings: 5,
+                        location: "White Hall",
+                        localTranscription: "The lazy cat jumped over the dog.",
+                        serverTranscription: ""
+                    }
+                )}
                 title="Add"
                 color="#007AFF"
             />
@@ -18,6 +32,20 @@ class UploadRecordingButton extends Component {
 }
 
 function addToListActionCreator() {
+    return[
+        {
+            eventID: "0",
+            id: "12345abacca",
+			name: "White Hall",
+			date: new Date('1995-12-17T03:24:01'),
+			status: "recording",
+            recordings: 5,
+            location: "White Hall",
+            localTranscription: "The lazy cat jumped over the dog.",
+            serverTranscription: ""
+        }
+
+    ]
 
 }
 async function uploadRecording() {
@@ -32,4 +60,4 @@ function matchDispatchToProps(dispatch){
     return bindActionCreators({addRecording: addRecording}, dispatch)
 }
 
-export default connect(matchDispatchToProps)(UserList);
+export default connect(null, matchDispatchToProps)(UploadRecordingButton);
