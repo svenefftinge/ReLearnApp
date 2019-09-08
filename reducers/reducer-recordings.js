@@ -1,7 +1,6 @@
 // Redux. Returns list of recordings
-
-export default function() {
-    return [
+// Initial State
+const initialState = [
         {
             eventID: "0",
             id: "12345abacca",
@@ -24,5 +23,18 @@ export default function() {
             localTranscription: "Yer bad. You should feel bad.",
             serverTranscription: ""
         }
-    ]
+];
+
+export default function(state = initialState, action) {
+    switch (action.type) {
+    // Logged In
+    case 'RECORDING_ADDED': {
+      return [...state, action.payload];
+    }
+    // Default
+    default: {
+      console.log(state);
+      return state;
+    }
+  }
 }

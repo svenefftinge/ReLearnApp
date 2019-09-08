@@ -14,13 +14,13 @@ class UploadRecordingButton extends Component {
                 onPress={()=>this.props.addRecording(
                     {
                         eventID: "0",
-                        id: "12345abacca",
-		    	        name: "White Hall",
-	    	        	date: new Date('1995-12-17T03:24:01'),
-		            	status: "recording",
-                        recordings: 5,
+                        id: "2940189248",
+			            name: "Whitee Hall",
+			            date: new Date('1995-12-17T03:24:02'),
+			            status: "recording",
+                        recordings: 6,
                         location: "White Hall",
-                        localTranscription: "The lazy cat jumped over the dog.",
+                        localTranscription: "The lazyy cat jumped over the dog.",
                         serverTranscription: ""
                     }
                 )}

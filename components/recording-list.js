@@ -18,7 +18,7 @@ class RecordingList extends Component {
         return(<FlatList
 						data= {this.createListItems()}
 
-            keyExtractor={(item, index) => item.id}
+            keyExtractor={(item, index) => {return item.id}}
 						renderItem={({ item, separators }) => (
      		    	<Cell
         				//cellStyle="Basic"
