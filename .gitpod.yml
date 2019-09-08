@@ -25,4 +25,4 @@ github:
     addLabel: false
 vscode:
   extensions:
-    - esbenp.prettier-vscode@1.7.0:EbyqFvwe32qQBptkOgfQpQ==
+    - esbenp.prettier-vscode@2.2.2
