@@ -5,11 +5,12 @@ import * as Icon from '@expo/vector-icons';
 import * as Font from 'expo-font';
 import { Asset } from 'expo-asset';
 import AppNavigator from './navigation/AppNavigator';
-import {createStore} from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
 import { Provider, connect } from 'react-redux';
 import allReducers from './reducers';
 
-const store = createStore(allReducers);
+const store = createStore(allReducers, applyMiddleware(thunk));
 
 export default class App extends React.Component {
   state = {
