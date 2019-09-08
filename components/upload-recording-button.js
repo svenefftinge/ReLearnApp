@@ -1,23 +1,23 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import * as DocumentPicker from 'expo-document-picker';
 import { bindActionCreators } from 'redux';
-import {addRecording} from '../actions/index.js';
+import { addRecording } from '../actions/index.js';
 import { Button } from 'react-native';
 import { connect } from 'react-redux';
 
 class UploadRecordingButton extends Component {
     render() {
-        return(
+        return (
             <Button
                 //onPress={()=>uploadRecording()}
                 //onPress={()=>addToListActionCreator()}
-                onPress={()=>this.props.addRecording(
+                onPress={() => this.props.addRecording(
                     {
                         eventID: "0",
                         id: "2940189248",
-			            name: "Whitee Hall",
-			            date: new Date('1995-12-17T03:24:02'),
-			            status: "recording",
+                        name: "Whitee Hall",
+                        date: new Date('1995-12-17T03:24:02'),
+                        status: "recording",
                         recordings: 6,
                         location: "White Hall",
                         localTranscription: "The lazyy cat jumped over the dog.",
@@ -32,13 +32,13 @@ class UploadRecordingButton extends Component {
 }
 
 function addToListActionCreator() {
-    return[
+    return [
         {
             eventID: "0",
             id: "12345abacca",
-			name: "White Hall",
-			date: new Date('1995-12-17T03:24:01'),
-			status: "recording",
+            name: "White Hall",
+            date: new Date('1995-12-17T03:24:01'),
+            status: "recording",
             recordings: 5,
             location: "White Hall",
             localTranscription: "The lazy cat jumped over the dog.",
@@ -49,15 +49,15 @@ function addToListActionCreator() {
 
 }
 async function uploadRecording() {
-  let result = await DocumentPicker.getDocumentAsync({type: '*/*'});
+    let result = await DocumentPicker.getDocumentAsync({ type: '*/*' });
 
-  if (!result.cancelled) {
-    //upload function(result.uri);
-  }
+    if (!result.cancelled) {
+        //upload function(result.uri);
+    }
 }
 
-function matchDispatchToProps(dispatch){
-    return bindActionCreators({addRecording: addRecording}, dispatch)
+function matchDispatchToProps(dispatch) {
+    return bindActionCreators({ addRecording: addRecording }, dispatch)
 }
 
 export default connect(null, matchDispatchToProps)(UploadRecordingButton);
