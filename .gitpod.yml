@@ -25,5 +25,13 @@ github:
     addLabel: false
 vscode:
   extensions:
-    - esbenp.prettier-vscode@2.2.2
     - esbenp.prettier-vscode@2.2.2:KF7uv+/v78QclIpOv6wh6g==
+ports:
+  - port: 8080
+    onOpen: open-preview
+  - port: 19000-19002
+    onOpen: ignore
+  - port: 5037
+    onOpen: ignore
+  - port: 4040
+    onOpen: ignore
