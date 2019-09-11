@@ -9,6 +9,13 @@ import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { Provider, connect } from 'react-redux';
 import allReducers from './reducers';
+import firebase from 'firebase/app'
+import 'firebase/auth'
+import 'firebase/firestore' // <- needed if using firestore
+import ReactReduxFirebaseProvider from 'react-redux-firebase/lib/ReactReduxFirebaseProvider'
+import firebaseReducer from 'react-redux-firebase/lib/reducer'
+import { createFirestoreInstance, firestoreReducer } from 'redux-firestore' // <- needed if using firestore
+
 
 const store = createStore(allReducers, applyMiddleware(thunk));
 
