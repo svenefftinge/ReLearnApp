@@ -9,15 +9,43 @@ import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { Provider, connect } from 'react-redux';
 import allReducers from './reducers';
-import firebase from 'firebase/app'
-import 'firebase/auth'
-import 'firebase/firestore' // <- needed if using firestore
-import ReactReduxFirebaseProvider from 'react-redux-firebase/lib/ReactReduxFirebaseProvider'
-import firebaseReducer from 'react-redux-firebase/lib/reducer'
-import { createFirestoreInstance, firestoreReducer } from 'redux-firestore' // <- needed if using firestore
+import firebase from 'firebase/app';
+import 'firebase/auth';
+import 'firebase/firestore'; // <- needed if using firestore
+import ReactReduxFirebaseProvider from 'react-redux-firebase/lib/ReactReduxFirebaseProvider';
+import { createFirestoreInstance } from 'redux-firestore'; // <- needed if using firestore
 
+// Firebase config
+const fbConfig = {
+    apiKey: "AIzaSyCckHSaEDjSJ8isGSdrAA7MnA61h7cBZMc",
+    authDomain: "relearn-7dfcc.firebaseapp.com",
+    databaseURL: "https://relearn-7dfcc.firebaseio.com",
+    projectId: "relearn-7dfcc",
+    storageBucket: "",
+    messagingSenderId: "812850176088",
+    appId: "1:812850176088:web:7c5afd509b4c0a460dea2d"
+  }
+
+// react-redux-firebase config
+const rrfConfig = {
+  userProfile: 'users',
+  useFirestoreForProfile: true // Firestore for Profile instead of Realtime DB
+}
+
+// Initialize firebase instance
+firebase.initializeApp(fbConfig)
+
+// Initialize other services on firebase instance
+firebase.firestore() // <- needed if using firestore
 
 const store = createStore(allReducers, applyMiddleware(thunk));
+
+const rrfProps = {
+  firebase,
+  config: rrfConfig,
+  dispatch: store.dispatch,
+  createFirestoreInstance // <- needed if using firestore
+}
 
 export default class App extends React.Component {
   state = {
@@ -38,7 +66,9 @@ export default class App extends React.Component {
         <View style={styles.container}>
           {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
           <Provider store={store}>
-            <AppNavigator />
+            <ReactReduxFirebaseProvider {...rrfProps}>
+              <AppNavigator />
+            </ReactReduxFirebaseProvider>
           </Provider>
         </View>
       );
