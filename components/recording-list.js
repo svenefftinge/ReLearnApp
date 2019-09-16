@@ -13,6 +13,7 @@ import {
 import Collapsible from "react-native-collapsible";
 import { Cell, Separator, TableView } from "react-native-tableview-simple";
 import moment from "moment";
+import {Recorder, Player} from 'react-native-audio-player-recorder-no-linking';
 
 class RecordingList extends Component {
   createListItems() {
@@ -31,11 +32,32 @@ class RecordingList extends Component {
             title={item.name}
             //contentContainerStyle={{ alignItems: "flex-start", height: 45 }}
 
-            /*
-                    cellContentView={
+
+            cellContentView={
                         // Collapsable Play Box goes here
-                    }
-                    */
+                         <Player
+    style={{ flex: 1 }}
+    onComplete={this.playerComplete.bind(this)}
+    completeButtonText={'Return Home'}
+    uri={AUDIO_CLIP_URL}
+    showDebug={true}
+    showBackButton={true}
+    playbackSlider={(renderProps) => {
+        return (
+        <Slider
+            minimimValue={0}
+            maximumValue={renderProps.maximumValue}
+            onValueChange={renderProps.onSliderValueChange}
+            value={renderProps.value}
+            style={{
+            width: '100%'
+            }}
+        />
+        );
+    }}
+/>
+            }
+
             onPress={console.log}
             onHighlightRow={separators.highlight}
             onUnHighlightRow={separators.unhighlight}

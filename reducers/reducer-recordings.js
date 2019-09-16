@@ -8,6 +8,7 @@ const initialState = [
         date: new Date('1995-12-17T03:24:01'),
         status: "recording",
         recordings: 5,
+        uri: "path/to/recording",
         location: "White Hall",
         localTranscription: "The lazy cat jumped over the dog.",
         serverTranscription: ""
@@ -19,6 +20,7 @@ const initialState = [
         status: "transcribing",
         date: new Date('1995-12-17T03:24:01'),
         recordings: 1,
+        uri: "path/to/recording",
         location: "Gates Hall",
         localTranscription: "Yer bad. You should feel bad.",
         serverTranscription: ""

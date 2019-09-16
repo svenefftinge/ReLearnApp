@@ -27,6 +27,7 @@ export function addRecordingFile() {
                 date: new Date('1995-12-17T03:24:01'),
                 status: "loading",
                 recordings: 5,
+                uri: result.uri,
                 location: "White Hall",
                 localTranscription: "The lazy cat jumped over the dog.",
                 serverTranscription: ""
