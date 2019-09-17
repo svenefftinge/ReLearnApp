@@ -8,7 +8,7 @@ const initialState = [
         date: new Date('1995-12-17T03:24:01'),
         status: "recording",
         recordings: 5,
-        uri: "path/to/recording",
+        uri: "https://github.com/robovm/apple-ios-samples/raw/master/avTouch/sample.m4a",
         location: "White Hall",
         localTranscription: "The lazy cat jumped over the dog.",
         serverTranscription: ""
@@ -20,7 +20,7 @@ const initialState = [
         status: "transcribing",
         date: new Date('1995-12-17T03:24:01'),
         recordings: 1,
-        uri: "path/to/recording",
+        uri: "https://github.com/robovm/apple-ios-samples/raw/master/avTouch/sample.m4a",
         location: "Gates Hall",
         localTranscription: "Yer bad. You should feel bad.",
         serverTranscription: ""

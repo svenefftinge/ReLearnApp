@@ -11,7 +11,7 @@ export const RecordingPlayer = (props) => (
     //onComplete={this.playerComplete.bind(this)}
     onComplete={()=> console.log("TODO: Add functionality to complete button..")}
     completeButtonText={'Return Home'}
-    uri={props.uri}
+    uri={props.recording.uri}
     showDebug={true}
     showBackButton={true}
     playbackSlider={(renderProps) => {

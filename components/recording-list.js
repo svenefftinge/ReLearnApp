@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
+import Constants from 'expo-constants';
 import {
   AppRegistry,
   FlatList,
@@ -10,31 +11,17 @@ import {
   TextInput,
   Slider
 } from "react-native";
-//"import {selectRecording} from '../actions/index';
-import Collapsible from "react-native-collapsible";
-import { Cell, Separator, TableView } from "react-native-tableview-simple";
 import moment from "moment";
-//import {Recorder, Player} from 'react-native-audio-player-recorder-no-linking';
 import Accordion from 'react-native-collapsible/Accordion';
 import { RecordingPlayer } from './player';
-
+/*
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
   },
 });
-
-const SECTIONS = [
-  {
-    title: 'First',
-    content: 'Lorem ipsum...',
-  },
-  {
-    title: 'Second',
-    content: 'Lorem ipsum...',
-  },
-];
+*/
 
 class RecordingList extends Component {
 
@@ -90,69 +77,6 @@ class RecordingList extends Component {
   }
 }
 
-/*class RecordingList extends Component {
-  createListItems() {
-    return this.props.recordings.map(recording => recording);
-  }
-  render() {
-
-  };
-   render() {
-     return (
-      <FlatList
-        data={this.createListItems()}
-        keyExtractor={(item, index) => {
-          return item.id;
-        }}
-        renderItem={({ item, separators }) => (
-          <Cell
-            cellStyle="Basic"
-            title={item.name}
-            contentContainerStyle={{ alignItems: "flex-start", height: 45 }}
-            var isCollapsed = {false}
-
-
-            cellContentView={
-                        // Collapsable Play Box goes here
-                         <Collapsible collapsed={this.isCollapsed}>
-                         <Player
-    style={{ flex: 1 }}
-    //onComplete={this.playerComplete.bind(this)}
-    onComplete={()=> console.log("TODO: Add functionality to complete button..")}
-    completeButtonText={'Return Home'}
-    uri={item.uri}
-    showDebug={true}
-    showBackButton={true}
-    playbackSlider={(renderProps) => {
-        return (
-        <Slider
-            minimimValue={0}
-            maximumValue={renderProps.maximumValue}
-            onValueChange={renderProps.onSliderValueChange}
-            value={renderProps.value}
-            style={{
-            width: '100%'
-            }}
-        />
-        );
-    }}
-/>
-</Collapsible>
-            }
-
-            onPress={console.log}
-            onHighlightRow={separators.highlight}
-            onUnHighlightRow={separators.unhighlight}
-          />
-        )}
-        ItemSeparatorComponent={({ highlighted }) => (
-          <Separator isHidden={highlighted} />
-        )}
-      />
-     );
-  }
-} */
-
 function mapStateToProps(state) {
   return {
     recordings: state.recordings
@@ -160,3 +84,63 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps)(RecordingList);
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#F5FCFF',
+    paddingBottom: 50,
+  },
+  title: {
+    textAlign: 'center',
+    fontSize: 22,
+    fontWeight: '300',
+    marginBottom: 20,
+  },
+  header: {
+    backgroundColor: '#F5FCFF',
+    padding: 10,
+  },
+  headerText: {
+    textAlign: 'left',
+    fontSize: 18,
+    fontWeight: '500',
+  },
+  content: {
+    padding: 0,
+    backgroundColor: '#fff',
+  },
+  active: {
+    backgroundColor: 'rgba(255,255,255,1)',
+  },
+  inactive: {
+    backgroundColor: 'rgba(245,252,255,1)',
+  },
+  selectors: {
+    marginBottom: 10,
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
+  selector: {
+    backgroundColor: '#F5FCFF',
+    padding: 10,
+  },
+  activeSelector: {
+    fontWeight: 'bold',
+  },
+  selectTitle: {
+    fontSize: 14,
+    fontWeight: '500',
+    padding: 10,
+  },
+  multipleToggle: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    marginVertical: 30,
+    alignItems: 'center',
+  },
+  multipleToggle__title: {
+    fontSize: 16,
+    marginRight: 8,
+  },
+});
