@@ -1,32 +1,4 @@
 ports:
-- port: 19000
-- port: 19001
-- port: 19002
-tasks:
-- init: npm install expo-cli
-  command: npm start --tunnel
-github:
-  prebuilds:
-    # enable for the master/default branch (defaults to true)
-    master: true
-# enable for all branches in this repo (defaults to false)
-    branches: false
-# enable for pull requests coming from this repo (defaults to true)
-    pullRequests: true
-# enable for pull requests coming from forks (defaults to false)
-    pullRequestsFromForks: false
-# add a check to pull requests (defaults to true)
-    addCheck: true
-# add a "Review in Gitpod" button as a comment to pull requests (defaults to false)
-    addComment: false
-# add a "Review in Gitpod" button to the pull request's description (defaults to false)
-    addBadge: false
-# add a label once the prebuild is ready to pull requests (defaults to false)
-    addLabel: false
-vscode:
-  extensions:
-    - esbenp.prettier-vscode@2.2.2:KF7uv+/v78QclIpOv6wh6g==
-ports:
   - port: 8080
     onOpen: open-preview
   - port: 19000-19002
@@ -35,3 +7,30 @@ ports:
     onOpen: ignore
   - port: 4040
     onOpen: ignore
+  - port: 19000
+  - port: 19001
+  - port: 19002
+tasks:
+- init: npm install expo-cli
+  command: npm start --tunnel
+vscode:
+  extensions:
+    - esbenp.prettier-vscode@2.2.2:KF7uv+/v78QclIpOv6wh6g==
+github:
+  prebuilds:
+    # enable for the master/default branch (defaults to true)
+    master: true
+    # enable for all branches in this repo (defaults to false)
+    branches: false
+    # enable for pull requests coming from this repo (defaults to true)
+    pullRequests: true
+    # enable for pull requests coming from forks (defaults to false)
+    pullRequestsFromForks: false
+    # add a check to pull requests (defaults to true)
+    addCheck: true
+    # add a "Review in Gitpod" button as a comment to pull requests (defaults to false)
+    addComment: false
+    # add a "Review in Gitpod" button to the pull request's description (defaults to false)
+    addBadge: false
+    # add a label once the prebuild is ready to pull requests (defaults to false)
+    addLabel: false
