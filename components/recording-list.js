@@ -7,20 +7,98 @@ import {
   StyleSheet,
   Text,
   View,
-  TextInput
+  TextInput,
+  Slider
 } from "react-native";
 //"import {selectRecording} from '../actions/index';
 import Collapsible from "react-native-collapsible";
 import { Cell, Separator, TableView } from "react-native-tableview-simple";
 import moment from "moment";
-import {Recorder, Player} from 'react-native-audio-player-recorder-no-linking';
+//import {Recorder, Player} from 'react-native-audio-player-recorder-no-linking';
+import Accordion from 'react-native-collapsible/Accordion';
+import { RecordingPlayer } from './player';
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+  },
+});
+
+const SECTIONS = [
+  {
+    title: 'First',
+    content: 'Lorem ipsum...',
+  },
+  {
+    title: 'Second',
+    content: 'Lorem ipsum...',
+  },
+];
 
 class RecordingList extends Component {
+
+  createListItems() {
+    return this.props.recordings.map(recording => recording);
+  }
+
+  state = {
+    activeSections: [],
+  };
+
+  _renderSectionTitle = section => {
+    return (
+      <View style={styles.content}>
+        <Text>{section.content}</Text>
+      </View>
+    );
+  };
+
+  _renderHeader = section => {
+    return (
+      <View style={styles.header}>
+        <Text style={styles.headerText}>{section.name}</Text>
+      </View>
+    );
+  };
+
+  _renderContent = section => {
+    return (
+      <View style={styles.content}>
+        {
+            <RecordingPlayer recording={section}/>
+        }
+      </View>
+    );
+  };
+
+  _updateSections = activeSections => {
+    this.setState({ activeSections });
+  };
+
+  render() {
+    return (
+      <Accordion
+        sections={this.createListItems()}
+        activeSections={this.state.activeSections}
+        renderSectionTitle={this._renderSectionTitle}
+        renderHeader={this._renderHeader}
+        renderContent={this._renderContent}
+        onChange={this._updateSections}
+      />
+    );
+  }
+}
+
+/*class RecordingList extends Component {
   createListItems() {
     return this.props.recordings.map(recording => recording);
   }
   render() {
-    return (
+
+  };
+   render() {
+     return (
       <FlatList
         data={this.createListItems()}
         keyExtractor={(item, index) => {
@@ -28,18 +106,21 @@ class RecordingList extends Component {
         }}
         renderItem={({ item, separators }) => (
           <Cell
-            //cellStyle="Basic"
+            cellStyle="Basic"
             title={item.name}
-            //contentContainerStyle={{ alignItems: "flex-start", height: 45 }}
+            contentContainerStyle={{ alignItems: "flex-start", height: 45 }}
+            var isCollapsed = {false}
 
 
             cellContentView={
                         // Collapsable Play Box goes here
+                         <Collapsible collapsed={this.isCollapsed}>
                          <Player
     style={{ flex: 1 }}
-    onComplete={this.playerComplete.bind(this)}
+    //onComplete={this.playerComplete.bind(this)}
+    onComplete={()=> console.log("TODO: Add functionality to complete button..")}
     completeButtonText={'Return Home'}
-    uri={AUDIO_CLIP_URL}
+    uri={item.uri}
     showDebug={true}
     showBackButton={true}
     playbackSlider={(renderProps) => {
@@ -56,6 +137,7 @@ class RecordingList extends Component {
         );
     }}
 />
+</Collapsible>
             }
 
             onPress={console.log}
@@ -67,9 +149,9 @@ class RecordingList extends Component {
           <Separator isHidden={highlighted} />
         )}
       />
-    );
+     );
   }
-}
+} */
 
 function mapStateToProps(state) {
   return {

@@ -1,43 +1,31 @@
-import React, {Component} from 'react';
-import { AppRegistry, FlatList, StyleSheet, Text, View, TextInput } from 'react-native';
-import moment from 'moment';
-import { Audio } from 'expo-av';
+import { Slider } from 'react-native';
+import { Player } from 'react-native-audio-player-recorder-no-linking';
+import React, { Component } from "react";
 
-export default class Player extends Component {
-// REQUIRES NEW STATE "Current Recording" with Recording object, audio location, current word
+// Give this a recording object that has a uri.
 
-
-    // Info component
-        // Name ()
-        // Date
-        // Location
-
-    // Transcription (Scrolling paragraph that can't be touch scrolled) 
-    // (Preview based on prop, full thing otherwise) (Highlights currentWord)
-
-    // Player Control Box (Locked within Player box, overlays on transcription when scrolling)
-        // Swipable audio navigation (sends updates to state)
-        // Audio controls (pause/forward or rewind 15 secs)
-        // Delete recording (with alert() are you sure) and Share (using Expo share sheet)
-    return() {
-        <View>
-            <TextInput style={{fontSize: 16, flex: 1}} placeholder={recording.name}/>
-            <Text>
-                {recording.name}
-            </Text>
-
-            <Text>
-                {moment(recording.date).format('lll')}
-            </Text>
-
-            <Text>
-                {recording.location}
-            </Text>
-
-        </View>
-    };
-        
-
-
-
-}
+export const RecordingPlayer = (props) => (
+    <Player
+    {...props}
+    style={{ flex: 1 }}
+    //onComplete={this.playerComplete.bind(this)}
+    onComplete={()=> console.log("TODO: Add functionality to complete button..")}
+    completeButtonText={'Return Home'}
+    uri={props.uri}
+    showDebug={true}
+    showBackButton={true}
+    playbackSlider={(renderProps) => {
+        return (
+        <Slider
+            minimimValue={0}
+            maximumValue={renderProps.maximumValue}
+            onValueChange={renderProps.onSliderValueChange}
+            value={renderProps.value}
+            style={{
+            width: '100%'
+            }}
+        />
+        );
+    }}
+/>
+);
